@@ -1,5 +1,7 @@
 import { useState } from "react";
 import LoginForm from "../components/LoginForm.jsx";
+import SignUpForm from "../components/SignUpForm.jsx";
+
 function Login() {
   const [toggleForm, setToggleForm] = useState("");
   return (
@@ -29,6 +31,9 @@ function Login() {
           </div>
         )}
         {toggleForm === "login" && <LoginForm setToggleForm={setToggleForm} />}
+        {toggleForm === "signup" && (
+          <SignUpForm setToggleForm={setToggleForm} />
+        )}
       </div>
     </div>
   );

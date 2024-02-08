@@ -1,10 +1,10 @@
 import { create } from "zustand";
 
-const userStore = create((set) => ({
+const useUserStore = create((set) => ({
   userName: localStorage.getItem("userName") || "",
   setUserName: (newUserName) =>
-    set((state) => {
-      userName: newUserName;
-    }),
+    set((state) => ({
+      userName: newUserName,
+    })),
 }));
-export default userStore;
+export default useUserStore;
