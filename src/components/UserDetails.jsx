@@ -16,7 +16,7 @@ function UserDetails({
   bio,
 }) {
   return (
-    <article className='bg-base-300 p-[1.25rem] rounded-md'>
+    <article className="bg-base-300 p-[1.25rem] rounded-md relative before:content-['User'] before:absolute before:-top-6 before:left-0 before:bg-base-300 before:px-4 before:text-accent">
       <Avartar
         avatar_url={avatar_url}
         name={name}
@@ -35,8 +35,8 @@ function UserDetails({
           <MdLocationPin />
           {location}
         </h4>
-        <NavLink
-          to={blog}
+        <a
+          href={`https://${blog}`}
           className={
             'normal-case flex items-center space-x-2 hover:text-accent transition-colors'
           }
@@ -44,7 +44,7 @@ function UserDetails({
           <HiMiniLink />
 
           {blog}
-        </NavLink>
+        </a>
       </div>
     </article>
   );
