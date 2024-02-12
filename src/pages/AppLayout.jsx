@@ -30,7 +30,7 @@ function AppLayout() {
           </button>
         </div>
       </header>
-      <main>
+      <main className={"p-4 mx-auto w-[95vw] grid"}>
         <Outlet />
       </main>
     </>
