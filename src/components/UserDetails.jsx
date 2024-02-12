@@ -2,7 +2,6 @@ import Avartar from './Avartar';
 import { HiMiniLink } from 'react-icons/hi2';
 import { HiOutlineBuildingOffice } from 'react-icons/hi2';
 import { MdLocationPin } from 'react-icons/md';
-import { NavLink } from 'react-router-dom';
 
 function UserDetails({
   avatar_url,
@@ -16,7 +15,7 @@ function UserDetails({
   bio,
 }) {
   return (
-    <article className="bg-base-300 p-[1.25rem] rounded-md relative before:content-['User'] before:absolute before:-top-6 before:left-0 before:bg-base-300 before:px-4 before:text-accent">
+    <article className="bg-base-300 p-[1.25rem] rounded-md relative before:content-['User'] before:absolute before:top-0 before:left-0 before:bg-base-300 before:px-4 before:text-accent before:-translate-y-5">
       <Avartar
         avatar_url={avatar_url}
         name={name}
