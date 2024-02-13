@@ -1,22 +1,29 @@
 import FollowerList from '../components/FollowerList.jsx';
+import Forks from '../components/Forks.jsx';
+import Language from '../components/Language.jsx';
 import SearchBar from '../components/SearchBar.jsx';
 import UserDetails from '../components/UserDetails.jsx';
+import WatchCount from '../components/WatchCount.jsx';
 import fetcher from '../utils/fetcher.js';
 import useSWR from 'swr';
 import useUserStore from '../store.js';
 function Dashboard() {
   const userName = useUserStore((state) => state.userName);
+  const searchUser = useUserStore((state) => state.searchUser);
   const { data, error } = useSWR(
-    `https://api.github.com/users/${'john-smilga'}`,
+    `https://api.github.com/users/${searchUser || userName}`,
     fetcher
   );
-  console.log(data, error);
+  if (error) return <p>{error}</p>;
   return (
     <>
       <SearchBar />
-      <div className='grid grid-cols-2 gap-x-4 mt-4 max-h-64'>
+      <div className='grid grid-cols-2 gap-4 mt-4 max-h-64'>
         {data && <UserDetails {...data} />}
         {data && <FollowerList url={data.followers_url} />}
+        {data && <Language url={data.repos_url} />}
+        {data && <WatchCount url={data.repos_url} />}
+        {data && <Forks url={data.repos_url} />}
       </div>
     </>
   );

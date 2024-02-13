@@ -1,6 +1,11 @@
 import { FaMagnifyingGlass } from 'react-icons/fa6';
-
+import { useState } from 'react';
+import useUserStore from '../store';
 function SearchBar() {
+  const setSearchUser = useUserStore((state) => state.setSearchUser);
+  const searchUser = useUserStore((state) => state.searchUser);
+  const [inputValue, setInputValue] = useState(searchUser);
+
   return (
     <div
       className={'flex items-center space-x-2 place-self-center mb-[1.25rem]'}
@@ -11,8 +16,14 @@ function SearchBar() {
         }
         type='text'
         placeholder={'please enter user name '}
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
       />
-      <div>
+      <div
+        onClick={() => {
+          setSearchUser(inputValue);
+        }}
+      >
         <FaMagnifyingGlass
           className={
             'justify-self-end text-accent cursor-pointer hover:text-primary transition-colors'
