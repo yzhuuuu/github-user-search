@@ -14,7 +14,18 @@ function Dashboard() {
     `https://api.github.com/users/${searchUser || userName}`,
     fetcher
   );
-  if (error) return <p>{error}</p>;
+
+  if (error)
+    return <span className='loading loading-spinner loading-lg'></span>;
+  if (!data)
+    return <span className='loading loading-spinner loading-lg'></span>;
+  if (data.message) {
+    return (
+      <div className='bg-base-300 w-[20rem] mx-auto h-[10rem] p-2 flex items-center justify-center '>
+        <h2 className='font-lato text-xl font-bold'>Out of Limited Access</h2>
+      </div>
+    );
+  }
   return (
     <>
       <SearchBar />
